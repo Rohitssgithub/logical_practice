@@ -8,6 +8,13 @@
 </head>
 
 <body>
+
+    <h1>SetTimeout content</h1>
+    <p id="timeout"></p>
+    <h1>SetInterval content</h1>
+    <p id="interval"></p>
+    <button onclick="clearIntervalExample()">Stop</button>
+
     <h1>Conditional Rendering</h1>
     <p id="rendered-element">OFF</p>
     <div class="custom-control custom-switch">
@@ -18,13 +25,33 @@
     <h1>Event Handling Task</h1>
 
     <h3>Email Registration</h3>
-    
-    <input id = "email" type="text" name="text1" placeholder="Enter E-mail ID">
-    <input id = "password" type="password" placeholder="Enter Password">
+
+    <input id="email" type="text" name="text1" placeholder="Enter E-mail ID">
+    <input id="password" type="password" placeholder="Enter Password">
     <p id="registered-text"></p>
-    <button id= "submit" onclick="validateForm()" onmouseover="mouseOverButton()" onmouseleave="mouseOutButton()"> Register</button>
-    
+    <button id="submit" onclick="validateForm()" onmouseover="mouseOverButton()" onmouseleave="mouseOutButton()">
+        Register</button>
+
     <script>
+
+        let count = 0;
+
+        function setTimeoutExample() {
+            document.getElementById("timeout").innerHTML = "This will be executed only once after timeout";
+            console.log("This will be executed only once after timeout");
+        }
+
+        function setIntervalExample() {
+            count++;
+            document.getElementById("interval").innerHTML = `This will be executed after every interval until clearInterval, Count: ${count}`
+            console.log("This will be executed after every interval");
+        }
+
+        function clearIntervalExample() {
+            clearInterval(e);
+        }
+        setTimeout(setTimeoutExample, 3000);
+        e = setInterval(setIntervalExample, 1000);
         const button = document.getElementById("customSwitches");
         const textElement = document.getElementById("rendered-element");
         textElement.innerHTML = button.checked ? "ON" : "OFF";
