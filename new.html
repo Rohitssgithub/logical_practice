@@ -236,7 +236,41 @@
         }
 
 
+        let strMain = 'ha@ppy# birthday !you';
 
+const revse = (str) => {
+    let words = str.split(' ');
+    let reversedWords = words.map((word) => {
+        console.log('word', word)
+        let reversedAlphaChars = word.split('').filter(char => char.match(/[a-zA-Z]/)).reverse();
+        console.log('reversedAlphaChars', reversedAlphaChars)
+        let result = word.split('').map((char, index) => {
+            console.log('char', char)
+            console.log('main', reversedAlphaChars)
+            return !char.match(/[a-zA-Z]/) ? char : reversedAlphaChars.shift();
+
+        });
+        console.log('result', result)
+        return result.join('');
+    });
+
+    return reversedWords.join(' ');
+}
+
+let ansf = revse(   );
+console.log(ansf);
+
+// const reverse = (str) => {
+//     return str.split(' ').map((word) => {
+//         console.log('word', word)
+//         const reversedAlphaChars = word.match(/[a-zA-Z]/g) ? word.match(/[a-zA-Z]/g).reverse() : [];
+//         console.log('reversedAlphaChars', reversedAlphaChars)
+//         return word.split('').map(char => char.match(/[a-zA-Z]/) ? reversedAlphaChars.shift() : char).join('');
+//     }).join(' ');
+// }
+// const strMain = 'happy# birthday !you';
+// const ansf = reverse(strMain);
+// console.log(ansf);
 
 
 
