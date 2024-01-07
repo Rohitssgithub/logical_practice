@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        /* Variables */
+        :root {
+            --color-blue: #753c94;
+            --color-body-text: #636363;
+            --color-white: #ffffff;
+        }
+
+        /* Animation */
+        @-webkit-keyframes movingTab {
+            0% {
+                transform: translateX(0%);
+            }
+
+            50% {
+                transform: translateX(-10%);
+            }
+
+            100% {
+                transform: translateX(0%);
+            }
+        }
+
+        @keyframes movingTab {
+            0% {
+                transform: translateX(0%);
+            }
+
+            50% {
+                transform: translateX(-10%);
+            }
+
+            100% {
+                transform: translateX(0%);
+            }
+        }
+
+        /* Base */
+        a {
+            text-decoration: none;
+        }
+
+        main {
+            margin: 50px;
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Tabs */
+        .tabs {
+            width: 850px;
+            margin: auto;
+        }
+
+        .tabs--list {
+            display: block;
+            margin: auto;
+            position: relative;
+            background-color: #e9e9e9;
+            border-radius: 8px;
+        }
+
+        .tabs--list li {
+            display: inline-block;
+            vertical-align: middle;
+            width: 25%;
+            position: relative;
+            z-index: 2;
+        }
+
+        .tabs--list a {
+            display: block;
+            padding: 15px 0 19px;
+            font-size: 18px;
+            line-height: 26px;
+            color: var(--color-body-text);
+            transition: color ease 0.7s, box-shadow 0.5s;
+            text-align: center;
+        }
+
+        .tabs--list a.actived {
+            color: var(--color-white);
+        }
+
+        .tabs--list a:hover {
+            box-shadow: 0 24px 18px -15px rgba(0, 0, 0, 0.09);
+        }
+
+        .tabs--list .moving-tab {
+            display: block;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 110%;
+            top: -5%;
+            background-color: var(--color-blue);
+            box-shadow: 0 24px 18px -15px rgba(117, 60, 148, 0.45);
+            transition: left 0.7s, box-shadow 0.5s;
+            z-index: 1;
+            border-radius: 8px;
+        }
+
+        .tabs--list .moving-tab:hover {
+            box-shadow: 0 24px 18px -15px rgba(117, 60, 148, 0.65);
+        }
+
+        .tabs--list .moving-tab--interaction {
+            animation: movingTab 0.4s forwards;
+            transition: left 0.4s cubic-bezier(0.29, 1.42, 0.79, 1);
+        }
+
+        .tabs--content {
+            text-align: left;
+            padding: 35px 25px;
+        }
+
+        .tabs--content li {
+            display: none;
+        }
+
+        .tabs--content li.actived {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+
+    <main>
+        <div class="tabs">
+            <ul class="tabs--list">
+                <li>
+                    <a href="javascript:;" title="TABS 1" data-content="tabs1" class="actived">TABS 1</a>
+                </li><!--
+            -->
+                <li>
+                    <a href="javascript:;" title="TABS 2" data-content="tabs2">TABS 2</a>
+                </li><!--
+            -->
+                <li>
+                    <a href="javascript:;" title="TABS 3" data-content="tabs3">TABS 3</a>
+                </li><!--
+            -->
+                <li>
+                    <a href="javascript:;" title="TABS 4" data-content="tabs4">TABS 4</a>
+                </li><!--
+            -->
+                <li class="moving-tab moving-tab--interaction"></li>
+            </ul>
+            <ul class="tabs--content">
+                <li data-content="tabs1" class="actived">
+                    Tabs 1
+                </li>
+                <li data-content="tabs2">
+                    Tabs 2
+                </li>
+                <li data-content="tabs3">
+                    Tabs 3
+                </li>
+                <li data-content="tabs4">
+                    Tabs 4
+                </li>
+            </ul>
+        </div>
+    </main>
+
+    <script>
+
+        var tabs = $('.tabs'),
+            tabsLists = $('.tabs ul.tabs--list li');
+        tabs.each(function () {
+            var tab = $(this),
+                tabItems = tab.find('ul.tabs--list'),
+                tabContentWrapper = tab.children('ul.tabs--content');
+
+            tabItems.on('click', 'a', function (event) {
+                event.preventDefault();
+                var activedItem = $(this);
+                if (!activedItem.hasClass('actived')) {
+                    var activedTab = activedItem.data('content'),
+                        activedContent = tabContentWrapper.find('li[data-content="' + activedTab + '"]');
+
+                    tabItems.find('a.actived').removeClass('actived');
+                    activedItem.addClass('actived');
+                    activedContent.addClass('actived').siblings('li').removeClass('actived');
+                }
+            });
+        });
+
+        tabsLists.click(function (e) {
+            if ($(this).hasClass('moving-tab')) {
+                return;
+            }
+            var whatTab = $(this).index();
+            var howFar = 25 * whatTab;
+            $(".moving-tab").css({
+                left: howFar + "%"
+            });
+        });
+    </script>
+</body>
+
+</html>

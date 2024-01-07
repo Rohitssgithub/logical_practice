@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        // 'use strict'
+        let x = 3.14;
+        delete x
+        console.log(x)
+
+        // x = 3.14;
+        // console.log(x)              
+
+
+        mainhd()
+        function mainhd() {
+            console.log('main')
+        }
+
+        function myDisplayer(some) {
+            // document.getElementById("demo").innerHTML = some;
+            console.log('some', some)
+        }
+
+        let myPromise = new Promise(function (myResolve, myReject) {
+
+            let x = 0;
+            if (x == 0) {
+                setTimeout(() => {
+                    myResolve("OK");
+                }, 5000);
+            } else {
+                myReject("Error");
+            }
+        });
+        myPromise.then((ele) => {
+            console.log(ele)
+        }).catch((err) => {
+            console.log(err)
+        })
+
+        let myPromises = new Promise((myResolve, myReject) => {
+            fetch('https://dummyjson.com/users')
+                .then(response => {
+                    if (response.status === 200) {
+                        return response.json();
+                    } else {
+                        throw new Error('API call failed');
+                    }
+                })
+                .then(data => {
+                    myResolve(data);
+                })
+                .catch(error => {
+                    myReject(error);
+                });
+        });
+
+        myPromises.then(data => {
+            console.log('API call successful. Data:', data);
+        })
+            .catch(error => {
+                console.log('API call failed. Error:', error);
+            });
+
+        const mainFun = () => {
+            try {
+                throw new Error
+            }
+            catch (err) {
+                console.log(err)
+            }
+        }
+        mainFun()
+
+        const apiFun = () => {
+            let d = fetch('https://dummyjson.com/users')
+            return d
+        }
+
+        apiFun().then((ele) => {
+            return ele.json()
+        }).then((ele) => {
+            console.log('ele', ele)
+        })
+
+
+        function asyncWait(seconds) {
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    resolve();
+                }, seconds * 1000);
+            });
+        }
+
+        asyncWait(3)
+            .then(() => {
+                console.log("Async task completed after 3 seconds");
+            });
+
+        console.log("End");
+
+
+
+        function createCounter() {
+            let count = 0;
+            function increment() {
+                count++;
+                console.log(count);
+            }
+
+            function decrement() {
+                count--;
+                console.log(count);
+            }
+
+            return {
+                increment,
+                decrement,
+            };
+        }
+        const counter = createCounter();
+        counter.increment(); // Outputs: 1
+        counter.increment(); // Outputs: 2
+        counter.decrement(); // Outputs: 1
+
+
+        function outerFunction() {
+            const outerVar = "I'm from the outer function";
+            function innerFunction() {
+                console.log(outerVar);
+            }
+
+            return innerFunction;
+        }
+
+        const closureExample = outerFunction();
+        closureExample();
+
+
+
+        let a = 1;
+        let b = 5;
+        [a, b] = [b, a];
+        console.log(a);
+        console.log(b);
+
+        let wrd = 'ten';
+        let sr = 'jnsjnatensdisdtenjsdten';
+
+
+        let ne = sr.split('').filter((ele, index) => {
+            return ele
+        });
+        console.log(ne)
+
+
+
+        const inputString = "skdnktenjnsjrtentenkjtenitenk";
+        const funcs = (str, target) => {
+            let count = 0;
+            const targetLen = target.length;
+            for (let i = 0; i <= str.length; i++) {
+                const substr = str.substring(i, i + targetLen);
+                if (substr === target) {
+                    count++;
+                }
+            }
+            return count;
+        };
+        const ans = funcs(inputString, "ten");
+        console.log(ans);
+
+        // const inputString = "skdnktenjnsjrtentenkjtenitenkten";
+        // const funcs = (str, target) => {
+        //     const regex = new RegExp(target, 'g');
+        //     const matches = str.match(regex);
+        //     return matches ? matches.length : 0;
+        // };
+
+        // const ans = funcs(inputString, "ten");
+        // console.log(ans);
+
+
+
+
+
+
+
+        let str = "rohit sanjay sawanat";
+
+        let words = str.split(' ');
+
+        let reversedWords = words.map(word => word.split('').reverse().join(''));
+        let reversedString = reversedWords.join(' ');
+
+        console.log(reversedString);
+
+
+
+        let num = 20;
+        let c = 1;
+        let ou = ''
+
+        for (let i = 0; i < num; i++) {
+            if (c <= 5) {
+                // console.log(i + 1)
+                // ou += c
+                document.write(c)
+                c++
+            }
+            else if (c > 5 && c <= 10) {
+                // ou += '* '
+                document.write('*')
+                // if( )
+            }
+        }
+
+        // console.log(ou)
+        document.write(ou)
+
+
+        for (let i = 1; i <= 5; i++) {
+            let line = '';
+            for (let j = 0; j < i; j++) {
+                line += '*';
+            }
+            console.log(line);
+        }
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

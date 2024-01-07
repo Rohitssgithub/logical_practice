@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        .grid-container {
+            border: solid red;
+            display: inline-grid;
+            grid-template-columns: auto auto auto auto;
+            place-items: center;
+        }
+
+        .grid-item {
+            border: 1px solid rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            font-size: 30px;
+            /* text-align: center; */
+        }
+
+        .grid-item {
+            grid-column: 1 / span 3;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <div class="grid-container">
+        <div class="grid-item">1</div>
+        <div class="grid-item">2</div>
+        <div class="grid-item">3</div>
+        <div class="grid-item">4</div>
+        <div class="grid-item">5</div>
+        <div class="grid-item">6</div>
+        <div class="grid-item">7</div>
+        <div class="grid-item">8</div>
+    </div> -->
+    <script>
+        let strMain = 'ha@ppy# birthday !you';
+
+        const revse = (str) => {
+            let words = str.split(' ');
+            let reversedWords = words.map((word) => {
+                console.log('word', word)
+                let reversedAlphaChars = word.split('').filter(char => char.match(/[a-zA-Z]/)).reverse();
+                console.log('reversedAlphaChars', reversedAlphaChars)
+                let result = word.split('').map((char, index) => {
+                    console.log('char', char)
+                    console.log('main', reversedAlphaChars)
+                    return !char.match(/[a-zA-Z]/) ? char : reversedAlphaChars.shift();
+
+                });
+                console.log('result', result)
+                return result.join('');
+            });
+
+            return reversedWords.join(' ');
+        }
+
+        let ansf = revse(   );
+        console.log(ansf);
+
+        // const reverse = (str) => {
+        //     return str.split(' ').map((word) => {
+        //         console.log('word', word)
+        //         const reversedAlphaChars = word.match(/[a-zA-Z]/g) ? word.match(/[a-zA-Z]/g).reverse() : [];
+        //         console.log('reversedAlphaChars', reversedAlphaChars)
+        //         return word.split('').map(char => char.match(/[a-zA-Z]/) ? reversedAlphaChars.shift() : char).join('');
+        //     }).join(' ');
+        // }
+        // const strMain = 'happy# birthday !you';
+        // const ansf = reverse(strMain);
+        // console.log(ansf);
+
+
+        
+
+    </script>
+</body>
+
+</html>

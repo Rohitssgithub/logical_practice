@@ -1,0 +1,2008 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="my.css">
+  <style>
+
+
+
+  </style>
+</head>
+
+<body>
+
+
+  <div class="animaDiv">
+
+  </div>
+
+  <!-- <button id="toggleButton">Toggle Content</button>
+    <div id="content" style="display: none;">
+      <p>This content is conditionally rendered.</p>
+    </div> -->
+
+  <!-- <div class="maindivs">
+    <div class="divA">
+
+    </div>
+    <div class="divC">
+
+    </div>
+
+    <div class="divB">
+      divb
+    </div>
+  </div>
+  <input type="text">
+  <div>
+    <b>Default:</b>
+    <span id="default"></span>
+  </div>
+  <div>
+    <b>Debounce:</b>
+    <span id="debounce"></span>
+  </div>
+  <div>
+    <b>Throttle:</b>
+    <span id="throttle"></span>
+  </div> -->
+
+
+  <input type="checkbox" id="myCheckbox">
+  <label for="myCheckbox">Checkbox Label</label>
+  <script>
+
+    // const input = document.querySelector("input")
+    // const defaultText = document.getElementById("default")
+    // const debounceText = document.getElementById("debounce")
+    // const throttleText = document.getElementById("throttle")
+
+    // const updateDebounceText = debounce(() => {
+    //   incrementCount(debounceText)
+    // })
+    // const updateThrottleText = throttle(() => {
+    //   incrementCount(throttleText)
+    // }, 100)
+
+    // function debounce(cb, delay = 1000) {
+    //   let timeout
+
+    //   return (...args) => {
+    //     clearTimeout(timeout)
+    //     timeout = setTimeout(() => {
+    //       cb(...args)
+    //     }, delay)
+    //   }
+    // }
+
+    // document.addEventListener("mousemove", e => {
+    //   incrementCount(defaultText)
+    //   updateDebounceText()
+    //   updateThrottleText()
+    // })
+
+    // function incrementCount(element) {
+    //   element.textContent = (parseInt(element.innerText) || 0) + 1
+    // }
+
+    // function throttle(cb, delay = 1000) {
+    //   let shouldWait = false
+    //   let waitingArgs
+    //   const timeoutFunc = () => {
+    //     if (waitingArgs == null) {
+    //       shouldWait = false
+    //     } else {
+    //       cb(...waitingArgs)
+    //       waitingArgs = null
+    //       setTimeout(timeoutFunc, delay)
+    //     }
+    //   }
+
+    //   return (...args) => {
+    //     if (shouldWait) {
+    //       waitingArgs = args
+    //       return
+    //     }
+
+    //     cb(...args)
+    //     shouldWait = true
+
+    //     setTimeout(timeoutFunc, delay)
+    //   }
+    // }
+
+    // document.addEventListener("mousemove", e => {
+    //   incrementCount(defaultText)
+    //   updateDebounceText()
+    //   updateThrottleText()
+    // })
+
+    // function incrementCount(element) {
+    //   element.textContent = (parseInt(element.innerText) || 0) + 1
+    // }
+
+
+
+    const arr = [1, 2, 3, 4, 4];
+    let first = arr[0]
+    let second = arr[0]
+    // let third = arr[0]
+    for (let i = 1; i <= arr.length - 1; i++) {
+      if (arr[i] > first) {
+        second = first
+        first = arr[i]
+      } else if (arr[i] > second && arr[i] !== first) {
+        second = arr[i]
+      }
+    }
+    console.log("Second largest element:", second);
+
+    let arry = [1, 4, 99, 77, 99, 66, 89];
+    let firs = arry[0]
+    let sec = arry[0]
+    for (let num of arry) {
+      if (num > firs) {
+        sec = firs;
+        firs = num
+      }
+      else if (num > sec && num < firs) {
+        sec = num
+      }
+    }
+    console.log(sec)
+
+
+    const findSquareRoot = (num) => {
+      let i = 1;
+      while (i * i <= num) {
+        if (i * i === num) {
+          return i;
+        }
+        i++;
+      }
+      return i ** 2 - num > num - (i - 1) ** 2 ? i - 1 : i;
+    }
+    console.log(findSquareRoot(5));
+
+
+    let pala = 'ids am rohit jksjds klsmdm s  ikoooooo'
+    const checkpal = (str) => {
+      let fir = str.split(' ').filter((ele) => ele !== '');
+      console.log('fir', fir)
+      let firs = fir[0]
+      for (let i of fir) {
+        if (i.length < firs.length) {
+          firs = i
+        }
+      }
+      return firs
+      //   let sp = str.split(' ')
+      // console.log(sp)
+      // let ne = sp.sort((a,b)=>{
+      //     return a.length - b.length
+      // })
+      // return ne[0]
+    }
+    console.log("longest word:", checkpal(pala))
+
+    function findShortestAndLongestWords(str) {
+      const words = str.split(' ').filter(word => word.trim() !== '');
+
+      let shortestWord = words[0];
+      let longestWord = words[0];
+
+      for (let i = 1; i < words.length; i++) {
+        if (words[i].length < shortestWord.length) {
+          shortestWord = words[i];
+        }
+        if (words[i].length > longestWord.length) {
+          longestWord = words[i];
+        }
+      }
+
+      return {
+        // shortestWord: shortestWord.replace(/[^A-Za-z ]/g, ''),
+        // longestWord: longestWord.replace(/[^A-Za-z ]/g, '')
+        shortestWord, longestWord
+      };
+    }
+
+    // Example usage
+    const inputString = "Hello, g this is an example sentence with some a i, short words.";
+    const { shortestWord, longestWord } = findShortestAndLongestWords(inputString);
+
+    console.log("Shortest word:", shortestWord);
+    console.log("Longest word:", longestWord);
+
+    // function reverseInteger(number) {
+    //   let reversed = 0;
+    //   while (number !== 0) {
+    //     const digit = number % 10;
+    //     reversed = reversed * 10 + digit;
+    //     number = Math.floor(number / 10);
+    //   }
+    //   return reversed;
+    // }
+
+    // const num = 12345;
+    // const reversedNum = reverseInteger(num);
+    // console.log("Original:", num);
+    // console.log("Reversed:", reversedNum);
+
+
+    let words = 'namessrrrtn';
+
+    const func = (str) => {
+      let frequencyMap = {}
+      for (const char of str) {
+        if (frequencyMap[char]) {
+          frequencyMap[char]++;
+        }
+        else {
+          frequencyMap[char] = 1;
+        }
+      }
+      let output = ''
+      for (let j in frequencyMap) {
+        output += j + frequencyMap[j]
+      }
+      console.log(output)
+    }
+    func(words)
+
+
+    function findCommonElements(arr1, arr2) {
+      const commonElements = [];
+      for (const element of arr1) {
+        console.log(element)
+        if (arr2.includes(element) && !commonElements.includes(element)) {
+          commonElements.push(element);
+        }
+      }
+      return commonElements;
+    }
+
+    const array1 = [1, 2, 3, 4, 5];
+    const array2 = [3, 4, 5, 6, 7];
+    const common = findCommonElements(array1, array2);
+
+    console.log("Common Elements:", common);
+
+
+    // const data =async()=>{
+    //     let delehi = new Promise((resolve,reject)=>{
+    //         setTimeout(() => {
+    //         resolve(25)
+    //     }, 5000);
+    //     })
+    //     let banglore = new Promise((resolve,reject)=>{
+    //         setTimeout(() => {
+    //             resolve(95)
+    //     }, 3000);
+    //     })
+    //     console.log('fetching delehi weather data');
+    //     let del = await delehi;
+    //     console.log(del , 'delhi weather')
+    //     console.log('fetching banglore weather data');
+    //     let ban = await banglore;
+    //     console.log(ban , 'banglore weather')
+    // }
+
+    // const datafun=async()=>{
+    //  await   data()
+    // console.log(7467364)
+    // }
+    // datafun()
+
+
+    const apiCall = async () => {
+      let api = await fetch('https://jsonplaceholder.typicode.com/users')
+      let data = api.json()
+      console.log(data)
+    }
+    apiCall()
+    // apiCall().then((res)=>{
+    //     return res.json()
+    // }).then((ele)=>{
+    //     console.log(ele)
+    // })
+    // console.log(66)
+
+
+    // function asyncWait(seconds) {
+    //   return new Promise((resolve) => {
+    //     setTimeout(() => {
+    //       resolve();
+    //     }, seconds * 1000);
+    //   });
+    // }
+
+    // asyncWait(3)
+    //   .then(() => {
+    //     console.log("Async task completed after 3 seconds");
+    //   });
+
+    // console.log("End");
+
+
+
+
+    // const toggleButton = document.getElementById("toggleButton");
+    // const contentDiv = document.getElementById("content");
+
+    // toggleButton.addEventListener("click", function() {
+    //   // Toggle the visibility of the content div
+    //   if (contentDiv.style.display === "none") {
+    //     contentDiv.style.display = "block";
+    //   } else {
+    //     contentDiv.style.display = "none";
+    //   }
+    // });
+
+
+    function callfun(name) {
+      return `Hello, ${name}! I'm ${this.name}.`
+    }
+    let objec = {
+      name: 'rohit',
+      age: 99
+    }
+    let ans = callfun.bind(objec, 'pk')
+    console.log(ans());
+
+
+    for (let i = 5; i >= 1; i--) {
+      for (let j = 1; j <= i; j++) {
+        document.write('*')
+      }
+      //   for(let m = i;m>=1 ;m--){
+      //     document.write(i)
+      //   }
+      document.write('<br>')
+    }
+
+
+    for (let i = 1; i <= 5; i++) {
+      let row = '';
+      for (let j = 1; j <= 5 - i; j++) {
+        row += ' ';
+      }
+      for (let k = 1; k <= i; k++) {
+        row += k;
+      }
+      console.log(row);
+    }
+
+    let str = 'rohit sanjay sawant hhhyyy';
+
+
+    // const mainfun=(str)=>{ 
+    //     let arrs = str.split('')
+    //     console.log(arrs)
+    //     let obj ={};
+
+    //     for(let i of arrs){
+    //         console.log(i)
+    //         if(obj[i]){
+    //             obj[i]++
+    //         }
+    //         else{
+    //             obj[i]=1
+    //         }
+    //     }
+    //     let row=''
+    //     for(let j in obj)
+    //     {
+    //         row += j + obj[j]
+    //     }
+    //     console.log(row)
+    // }
+    // mainfun(str)
+
+    // let str = 'rohit Rohit sanjay sawant hhhyyy';
+    // const charFrequency = (str) => {
+    //   const lowercaseStr = str.toLowerCase();
+    //   const frequency = lowercaseStr.split('').reduce((acc, char) =>{
+    //     acc[char] ? acc[char]++ : acc[char]= 1;
+    //     return acc;
+    //   }, {});
+    //   return frequency;
+    // };
+    // const result = charFrequency(str);
+    // console.log(result);
+
+
+
+
+    var funb = () => {
+      console.log('called')
+    }
+    funb()
+
+    const person = {
+      name: 'John Doe',
+      age: 30,
+      address: {
+        street: '123 Main St',
+        city: 'Exampleville',
+        country: 'Exampleland'
+      }
+    };
+
+    const cityName = person.address?.city;
+    const zipCode = person.address?.zipCode;
+
+    console.log(cityName);
+    console.log(zipCode);
+
+    const adventurer = {
+      name: 'Alice',
+      cat: {
+        name: 'Dinah',
+      },
+    };
+
+    const dogName = adventurer.dog?.name;
+    console.log(dogName);
+
+
+    let arr1 = ['name', 'age', 'lname'];
+    let arr2 = ['rohit', 88, 'sawant'];
+    let out = {};
+
+    for (let i = 0; i < arr1.length; i++) {
+      out[arr1[i]] = arr2[i];
+    }
+
+    console.log(out);
+
+    const mainsfun = () => {
+      let num = 1;
+      try {
+        //   num.toUpperCase();   
+        // throw "Too big";    // throw a text
+        throw new Error('Parameter is not a number!');
+      }
+      catch (err) {
+        console.log(err)
+      }
+    }
+    mainsfun()
+    console.log(8)
+
+    // find prime between given range 
+
+    let uptonum = 8;
+
+    const checkPrimeInRange = (uptonum) => {
+      let c = 0
+
+      for (let i = 1; i <= uptonum; i++) {
+        let prime = true;
+
+        if (i <= 1) {
+          console.log(`this is not prime number ${i}`)
+        }
+        else if (i >= 2) {
+          for (let j = 2; j < i; j++) {
+            if (i % j == 0) {
+              prime = false
+            }
+          }
+          if (prime) {
+            c++
+            console.log(`this is  prime number ${i}`)
+          }
+          else {
+            console.log(`this is not prime number ${i}`)
+          }
+        }
+      }
+      console.log('total count', c)
+
+    }
+    checkPrimeInRange(uptonum)
+
+
+    // recursive function 
+    function countDown(number) {
+      console.log(number);
+      number = number - 1;
+      console.log(number, 'new')
+      if (number > 0) {
+        countDown(number);
+      }
+    }
+    countDown(4);
+
+
+    let data = [
+      { name: 'raj' },
+      { name: 'rohan' }
+    ];
+
+    localStorage.setItem('arr', JSON.stringify(data));
+    sessionStorage.setItem('arr', JSON.stringify(data));
+
+
+    let strval = 'Rohit sanjay sawant';
+
+
+    console.log(1 == 4 == 0)
+
+
+
+    function mainfun() {
+      let a = b = 8
+    }
+    mainfun()
+    console.log(b)
+
+    const sum = (x, y) => {
+      return x + y
+    }
+    const callback = (s) => {
+      return s(1, 2)
+    }
+    console.log(callback(sum))
+
+    const closes = () => {
+      let v = 11;
+      function mainfun() {
+        console.log(v)
+      }
+      return mainfun;
+    }
+    closes()();
+
+
+
+    // const prom =async()=>{
+    //   let firtprom = new Promise((resolve)=>{
+    //     setTimeout(()=>{
+    //      resolve(88)
+    //     },5000)
+    //   })
+    //   let secprom = new Promise((resolve)=>{
+    //     setTimeout(()=>{
+    //      resolve(25)
+    //     },3000)
+    //   })
+
+    //   console.log('feching weather');
+
+    //   let first = await firtprom;
+    //   console.log('fetched' , first);
+    //   let secon = await secprom;
+    //   console.log('fetched' , secon);
+    // }
+    //  const getfun=async()=>{
+    // await prom()
+    // setTimeout(()=>{
+    //   console.log(8)
+    // },2000)
+    // }
+    // getfun()
+
+
+    let obj = {
+      name: 'rohit',
+      funs() {
+        // console.log(this.name)
+        function innerfun() {
+          console.log(this.name)
+        }
+        innerfun()
+      }
+    }
+    obj.funs()
+
+    let stsr = 'rohit Rohit sanjay sawant hhhyy';
+    let ae = 'sjn'
+    const funsmai = () => {
+      console.log(this.ae)
+    }
+
+    funsmai()
+    function mainarr() {
+      console.log(this.ae)
+    }
+    mainarr()
+
+    console.log(4 / 0)
+
+    const fruits = ["Banana", "Orange", "Apple", "Mango"];
+    const f = Object.entries(fruits);
+    console.log(f)
+
+    const users = {
+      name: 'rohit',
+      age: 99,
+      city: 'mumbai',
+      contact: 77
+    }
+
+    for (let i in users) {
+      if (typeof users[i] === 'number') {
+        users[i] *= 2
+      }
+    }
+    console.log(users)
+
+
+    let nameobj = {
+      name: "rohan",
+      age: 99
+    }
+    let member = [nameobj];
+    console.log(member)
+    nameobj.name = null
+    // console.log(member)
+
+
+
+    // const originalArray = [1, 2, [3, 4]];
+    // const shallowCopy = [...originalArray];
+    // shallowCopy[1] = 88
+    // shallowCopy[2][0] = 99; // Changes will reflect in both originalArray and shallowCopy
+    // console.log(originalArray); // [1, 2, [99, 4]]
+    // console.log(shallowCopy);   // [1, 2, [99, 4]]
+
+
+    const originalObject = { name: 'Alice', nested: { age: 25 } };
+    console.log(originalObject); // { name: 'Alice', nested: { age: 30 } }
+
+    const shallowCopy = { ...originalObject };
+    console.log(shallowCopy)
+    shallowCopy.name = 'sdkkk'
+    shallowCopy.nested.age = 30; // Changes will reflect in both originalObject and shallowCopy
+
+    console.log(originalObject); // { name: 'Alice', nested: { age: 30 } }
+
+    console.log(shallowCopy);    // { name: 'Alice', nested: { age: 30 } }
+
+
+    let objss = {
+      name: 'pk',
+      age: 66,
+      desc: {
+        main: 199
+      }
+    }
+    let newobj = objss;
+    console.log(newobj)
+    newobj.name = 99;
+    // newobj.desc.main = 8888
+    console.log(newobj)
+
+
+    let arrrs = [1, 2, 3, 4, 5];
+
+    const funss = (a, ...b) => {
+      console.log()
+    }
+    funss(1, 2, 3)
+
+    // Currying function
+    function add(a, b) {
+      return a + b;
+    }
+    function curryAdd(a) {
+      return function (b) {
+        return a + b;
+      }
+    }
+    const addFive = curryAdd(5);
+    console.log(addFive(3));
+    const curryMultiply = a => b => a * b;
+    const multiplyByThree = curryMultiply(3);
+    console.log(multiplyByThree(4));
+
+
+    // A unary function that squares its input
+    function square(x) {
+      return x * x;
+    }
+    console.log(square(5));
+    const numbers = [1, 2, 3, 4, 5];
+    const squaredNumbers = numbers.map(square);
+    console.log(squaredNumbers);
+
+
+
+    // switch case 
+    function getDayName(dayNumber) {
+      let dayName;
+
+      switch (dayNumber) {
+        case 0:
+          dayName = "Sunday";
+          break;
+        case 1:
+          dayName = "Monday";
+          break;
+        case 2:
+          dayName = "Tuesday";
+          break;
+        case 3:
+          dayName = "Wednesday";
+          break;
+        case 4:
+          dayName = "Thursday";
+          break;
+        case 5:
+          dayName = "Friday";
+          break;
+        case 6:
+          dayName = "Saturday";
+          break;
+        default:
+          dayName = "Invalid day";
+      }
+
+      return dayName;
+    }
+
+    const dayNumber = 33;
+    const dayName = getDayName(dayNumber);
+    console.log(`The day number ${dayNumber} corresponds to ${dayName}.`);
+
+
+    // program for a simple calculator
+    let result;
+
+    // take the operator input
+    // const operator = prompt('Enter operator ( either +, -, * or / ): ');
+
+    // // take the operand input
+    // const number1 = parseFloat(prompt('Enter first number: '));
+    // const number2 = parseFloat(prompt('Enter second number: '));
+
+    // switch (operator) {
+    //   case '+':
+    //     result = number1 + number2;
+    //     console.log(`${number1} + ${number2} = ${result}`);
+    //     break;
+    //   case '-':
+    //     result = number1 - number2;
+    //     console.log(`${number1} - ${number2} = ${result}`);
+    //     break;
+    //   case '*':
+    //     result = number1 * number2;
+    //     console.log(`${number1} * ${number2} = ${result}`);
+    //     break;
+    //   case '/':
+    //     result = number1 / number2;
+    //     console.log(`${number1} / ${number2} = ${result}`);
+    //     break;
+
+    //   default:
+    //     console.log('Invalid operator');
+    //     break;
+    // }
+
+
+    // program to generate fibonacci series up to n terms
+
+    // take input from the user
+    // const number = parseInt(prompt('Enter the number of terms: '));
+    // let n1 = 0, n2 = 1, nextTerm;
+
+    // console.log('Fibonacci Series:');
+
+    // for (let i = 1; i <= number; i++) {
+    //   console.log(n1);
+    //   nextTerm = n1 + n2;
+    //   n1 = n2;
+    //   n2 = nextTerm;
+    // }
+
+
+    function generateFibonacci(n) {
+      const fibonacciSeries = [0, 1];
+
+      for (let i = 2; i < n; i++) {
+        const nextNumber = fibonacciSeries[i - 1] + fibonacciSeries[i - 2];
+        fibonacciSeries.push(nextNumber);
+      }
+
+      return fibonacciSeries;
+    }
+
+    const n = 10; // Generate the first 10 numbers of the Fibonacci series
+    const fibonacciSeries = generateFibonacci(n);
+    console.log(`Fibonacci series of first ${n} numbers: ${fibonacciSeries.join(', ')}`);
+
+    // program to generate fibonacci series up to a certain number
+
+    // take input from the user
+    const number = 10
+    let n1 = 0, n2 = 1, nextTerm;
+
+    console.log('Fibonacci Series:');
+    console.log(n1); // print 0
+    console.log(n2); // print 1
+
+    nextTerm = n1 + n2;
+
+    while (nextTerm <= number) {
+
+      // print the next term
+      console.log(nextTerm);
+
+      n1 = n2;
+      n2 = nextTerm;
+      nextTerm = n1 + n2;
+    }
+
+
+    const { prop1, prop2, ...rest } = { prop1: 1, prop2: 2, prop3: 3, prop4: 4 };
+
+    console.log(prop1);  // Output: 1
+    console.log(prop2);  // Output: 2
+    console.log(rest);   // Output: { prop3: 3, prop4: 4 }
+
+    let name = 'rohit';
+    let val = 'saw';
+
+    let obs = {
+      [name]: val
+    }
+    console.log(obs)
+
+
+    let objs = {
+      a: 100,
+      b: 200,
+      name: 'rohit'
+    }
+
+    for (let i in objs) {
+      if (typeof objs[i] === 'number') {
+        objs[i] *= 2
+      }
+    }
+    console.log(objs)
+
+    // let pers = { name: 'rohit' };
+    // let arr = [per]
+    // console.log(per)
+
+    // per.name = null
+    // console.log(arr)
+
+    let objs1 = { name: 'rohit', age: 22 }
+    console.log(objs1);
+
+    const funcv = (a) => {
+      a.age = 33
+      a = {
+        name: "pk",
+        age: 334
+      }
+      return a
+    }
+
+    let obj2 = funcv(objs1)
+    console.log(objs1);
+    console.log(obj2)
+
+
+
+    const originalObjects = {
+      name: 'John',
+      age: 30,
+      address: {
+        street: '123 Main St',
+        city: 'Exampleville',
+      },
+    };
+    console.log(originalObjects)
+
+    // Shallow copy using the spread operator
+    const shallowCopys = { ...originalObjects };
+    console.log(shallowCopys)
+    // Modifying a property in the shallow copy
+    shallowCopys.name = 'Jane';
+    console.log(originalObjects)
+    console.log(shallowCopys)
+
+    // Modifying a nested object in the shallow copy
+    shallowCopys.address.city = 'New Exampleville';
+
+    console.log(originalObjects.name); // Output: 'John'
+    console.log(originalObjects.address.city); // Output: 'New Exampleville'
+
+
+    // const persons = {
+    //   firstName: 'John',
+    //   lastName: 'Doe',
+    //   info: {
+    //     age: 33
+    //   }
+    // };
+    // console.log(persons)
+
+
+    // // using spread ...
+    // let p1 = {
+    //   ...persons
+    // };
+    // p1.firstName = 'dd'
+    // // p1.info.age = 88
+    // console.log(p1)
+    // // using  Object.assign() method
+    // let p2 = Object.assign({}, persons);
+    // p2.firstName = 'dd';
+    // p2.info.age = 883;
+
+    // console.log(p2)
+    // console.log(persons)
+    // using JSON
+    // let p3 = JSON.parse(JSON.stringify(persons));
+    // p3.firstName = 'dd'
+    // p3.info.age = 9
+    // console.log(p3)
+    // console.log(persons)
+
+
+    //     let arr =[1,2,34,22,2];
+    // let len = 0
+    // while(arr[len] !== undefined){
+    //     len++
+    // }
+    // console.log(len)
+
+    //     let arr = [1, 27, 9, 2];
+    // let out = [];
+
+    // for (let i = 0; i < arr.length; i++) {
+    //   out.push(arr[i]);
+    //   if (i < arr.length - 1) {
+    //     out.push(0);
+    //   }
+    // }
+
+    // console.log(out);
+
+
+    function foo() {
+      console.log(this);
+    }
+
+    function callFoo(fn) {
+      fn();
+    }
+
+    let objw = { foo };
+    callFoo(objw.foo);
+
+
+    let thiso = {
+      name: 'rohit',
+      age: 33,
+      getfun() {
+        console.log(this)
+      }
+    }
+    thiso.getfun()
+
+    //     let arr = [1,2,3,4,5,5]
+    // let length = 0
+    // arr.forEach((_,i)=> i+ 1 ? length++ : null)
+    // console.log(length)
+
+    let resulst = Number('');
+    console.log(resulst);
+
+
+    let table = 2;
+    let numb = 1
+
+    while (numb <= 10) {
+      console.log(2 * numb);
+      numb++
+    }
+
+
+    let a = [1, 2, 4, 0, 0, 3, 0];
+
+    let outArr = a.reduce((arr, ele) => {
+      ele == 0 ? arr.unshift(ele) : arr.push(ele)
+      return arr
+    }, [])
+    console.log(outArr)
+
+
+    // function xx() {
+    //   setTimeout(() => {
+    //     console.log(i)
+    //   }, 1000);
+    // }
+    // xx()
+
+
+    // null is 0 when used with number
+    let results;
+    results = 4 + null;
+    console.log(results);  // 4
+    results = 4 - null;
+    console.log(resulst);  // 4
+
+
+    // The Boolean value true is 
+    // converted to number 1 and 
+    // then operation is performed 
+    var x = true + 2;
+    // The Boolean value false is 
+    // converted to number 0 and 
+    // then operation is performed 
+    var y = false + 2;
+
+    console.log(x);
+    console.log(y);
+
+
+    // name function 
+    function nameFun() {
+      console.log('name function')
+    }
+    nameFun()
+
+
+    // (function () {
+    //   var message = "Hello, I'm inside an IIFE";
+    //   console.log(message);
+    // })(); // Immediately invoked  
+
+
+    // (function (name) {
+    //   var greeting = "Hello, " + name;
+    //   console.log(greeting);
+    // })("John"); // Immediately invoked with an argument
+
+
+    // var result = (function (x, y) {
+    //   return x + y;
+    // })(5, 3); // Immediately invoked with arguments
+
+    // console.log(result); // Output: 8
+
+
+    let objectVl = {
+      a: 1,
+      b: 2,
+      c: null,
+      d: undefined
+
+    }
+
+    let newObjectvl = Object.fromEntries(Object.entries(objectVl).filter(([_, ele]) => ele != null));
+    console.log('newObjectvl', newObjectvl)
+
+    function removeUndefinedAndNull(obj) {
+      const filteredObject = {};
+      for (const key in obj) {
+        if (obj[key] !== undefined && obj[key] !== null) {
+          filteredObject[key] = obj[key];
+        }
+      }
+      return filteredObject;
+    }
+    const originalObj = {
+      name: 'John',
+      age: 30,
+      address: null,
+      email: undefined,
+    };
+
+    const filteredObject = removeUndefinedAndNull(originalObj);
+
+    console.log(filteredObject);
+
+
+    // let a = 5 + '5' - 5;
+    // console.log(a)
+
+    const persons = {
+      firstName: "John",
+      lastName: "Doe",
+      id: 5566,
+      fullName: function () {
+        return this.firstName + " " + this.lastName;
+      }
+    };
+    console.log(persons.fullName())
+
+
+    const mainobjs = {
+      name: 'rohit',
+      age: 22,
+      callFun() {
+        const innerfun = () => {
+          return this.name
+          // console.log(this.name)
+        }
+        return innerfun
+      }
+    }
+    let dte = mainobjs.callFun()
+    console.log(dte())
+
+    const mainobjss = {
+      name: 'pk',
+      age: 22,
+      callFun() {
+        const innerfun = () => {
+          return this.name
+          // console.log(this.name)
+        }
+        return innerfun
+      }
+    }
+    let dtes = mainobjss.callFun()
+    console.log(dtes())
+
+
+
+
+
+    function filterPeopleByAge(people, ageThreshold) {
+      return people.filter(person => person.age >= ageThreshold);
+    }
+
+    const people = [
+      { name: "Alice", age: 28 },
+      { name: "Bob", age: 35 },
+      { name: "Charlie", age: 18 },
+      { name: "David", age: 42 },
+      { name: "Eve", age: 23 },
+    ];
+
+    const filteredPeople = filterPeopleByAge(people, 30);
+
+    console.log(filteredPeople);
+
+
+    // this keyword 
+
+
+    let newthis = 7;
+    console.log('this', this.newthis)
+
+    function getParam() {
+      console.log(this.newthis)
+    }
+    getParam()
+
+
+
+    let obje = {
+      name: 'rohit',
+      mainFun() {
+        console.log(this.name)
+      }
+    }
+
+
+    obje.mainFun()
+
+
+    const myObject = {
+      name: 'dhci',
+      method() {
+        console.log(this.name);
+        const mainfunss = () => {
+          console.log(this.name);
+        }
+        mainfunss()
+      }
+    };
+
+    myObject.method();
+
+    let numArray = [1, 0, -1, NaN, null, undefined];
+
+    let newArrays = numArray.filter((ele) => {
+      return typeof ele === 'number' && !isNaN(ele);
+    });
+
+    console.log(newArrays);
+
+
+    function findPairWithSum(arr, targetSum) {
+      const numSet = new Set();
+      console.log('numSet', numSet)
+      for (let i = 0; i < arr.length; i++) {
+        const complement = targetSum - arr[i];
+        if (numSet.has(complement)) {
+          return [complement, arr[i]];
+        }
+        numSet.add(arr[i]);
+      }
+
+      return null;
+    }
+
+    const numberss = [2, 7, 11, 15, 6, 3];
+    const target = 9;
+
+    const resultss = findPairWithSum(numberss, target);
+    console.log(resultss);
+
+
+
+    const numbersss = [2, 7, 11, 15, 6, 3];
+    const targetSum = 9;
+    const seenNumbers = {};
+    for (let i = 0; i < numbersss.length; i++) {
+      const complement = targetSum - numbersss[i];
+      console.log('complement', complement)
+      if (seenNumbers[complement] !== undefined) {
+        console.log(`Pair found: [${complement}, ${numbersss[i]}]`);
+      }
+      seenNumbers[numbersss[i]] = i;
+    }
+
+
+    let objsss = {
+      "month_table_data": {
+        "2020": [
+          {
+            "month": "January",
+            "value": 148.1999969482422
+          },
+          {
+            "month": "February",
+            "value": 147.1999969482422
+          }
+        ]
+      },
+      "year_table_data": [
+        {
+          "year": 2020,
+          "high": 23.0787,
+          "low": 45.763,
+          "percentage": 42
+        },
+        {
+          "year": 2021,
+          "high": 23.0787,
+          "low": 45.763,
+          "percentage": 42
+        }
+      ],
+      "stock_statistics": {
+        "market_cap": 12.5,
+        "ebitda": 13.5,
+        "pe": 124.543,
+        "revenue": 34.678,
+        "lp": 42.56,
+        "op_cash_flow": 76,
+        "52_week_high": 144.59,
+        "52_week_low": 902.12,
+        "eps": 342.3,
+        "total_debt": 41.53,
+        "cash_reserved": 912.8,
+        "levered_free_cash_flow": 712.75
+      }
+    }
+
+
+
+    let newd = objsss.year_table_data.map((ele) => {
+      const yearData = objsss.month_table_data[ele.year];
+      const values = yearData ? yearData.map(monthData => monthData.value) : [];
+
+      return {
+        year: ele.year,
+        values: values
+      };
+    });
+
+
+    let m = newd.map((ele) => ele.values);
+    console.log(m.flat().map((e) => e))
+
+
+
+    let aObj = {
+      name: 'rohan'
+    }
+    let sjdn = Symbol('name');
+    aObj[sjdn] = 'dskmdls';
+    console.log(aObj)
+
+    result = Number(null);
+    console.log(result);
+
+    result = Number(' ')
+    console.log(result);
+
+
+
+    let remNan = [1, 2, NaN, 0, null];
+    let numericValues = remNan.filter(value => typeof value === 'number' && !isNaN(value));
+    console.log(numericValues);
+    // let nonNumericValues = remNan.filter(value => isNaN(value) || value === null);
+    // console.log(nonNumericValues);
+
+
+
+    // let strs = 'rohit Rohit sanjay sawant hhhyyy';
+    // const charFrequency = (str) => {
+    //   const lowercaseStr = str.toLowerCase().split('').filter((ele) => ele !== ' ')
+    //   const frequency = lowercaseStr.reduce((acc, char) => {
+    //     acc[char] ? acc[char]++ : acc[char] = 1;
+    //     return acc;
+    //   }, {});
+    //   return frequency;
+    // };
+    // const resuslt = charFrequency(strs);
+    // console.log(resuslt);
+
+
+    const mainfunss = (str) => {
+      let arrs = str.split('').filter((ele) => ele !== ' ')
+      let obj = {};
+      for (let i of arrs) {
+        if (obj[i]) {
+          obj[i]++
+        }
+        else {
+          obj[i] = 1
+        }
+      }
+      // let row = ''
+      // for (let j in obj) {
+      //   row += j + obj[j]
+      // }
+      // console.log(row)
+    }
+    mainfunss(str)
+
+
+    function reverseInteger(number) {
+      let reversed = 0;
+      while (number !== 0) {
+        const digit = number % 10;
+        console.log('digit', digit)
+        reversed = reversed * 10 + digit;
+        number = Math.floor(number / 10);
+      }
+      return reversed;
+    }
+
+    const num = 12345;
+    const reversedNum = reverseInteger(num);
+    console.log(reversedNum);
+
+
+    let text1 = "ab";
+    let text2 = "ab";
+    let resultsss = text1.localeCompare(text2);
+    console.log(resultsss)
+
+
+    const dateObject = new Date();
+    console.log('dateObject', dateObject)
+    const day = String(dateObject.getDate()).padStart(2, '0');
+    console.log('day', day)
+    const month = String(dateObject.getMonth() + 1).padStart(2, '0');
+    console.log('month', month)
+    const year = dateObject.getFullYear();
+    console.log('year', year)
+    let formattedDate = `${day}-${month}-${year}`;
+    console.log('formattedDate', formattedDate)
+
+
+    // function countUpperCaseLowerCase(str) {
+    //   let uppercaseCount = 0;
+    //   let lowercaseCount = 0;
+    //   for (let i = 0; i < str.length; i++) {
+    //     const char = str[i];
+    //     if (char >= 'A' && char <= 'Z') {
+    //       uppercaseCount++;
+    //     }
+    //     else if (char >= 'a' && char <= 'z') {
+    //       lowercaseCount++;
+    //     }
+    //   }
+    //   return { uppercaseCount, lowercaseCount };
+    // }
+    // const inputStrings = "Hello World!";
+    // const counts = countUpperCaseLowerCase(inputStrings);
+    // console.log(counts.uppercaseCount);
+    // console.log(counts.lowercaseCount);
+
+
+    // let strMain = 'happy# birthday to !you';
+    // let mm = strMain.split(' ');
+    // console.log(mm)
+    // let newmm = mm.map((ele) => {
+    //   return ele.split('').reverse().join('')
+    // })
+    // console.log(newmm.join(' '))
+
+
+
+
+
+    let strs = 'rohit Rohit sanjay sawant hhhyyy';
+    const charFrequency = (str) => {
+      const lowercaseStr = str.toLowerCase().split('').filter((ele) => ele !== ' ')
+      console.log(lowercaseStr)
+      const frequency = lowercaseStr.reduce((acc, char) => {
+        acc[char] ? acc[char]++ : acc[char] = 1;
+        return acc;
+      }, {});
+      console.log(frequency)
+      return frequency;
+    };
+    const resuslt = charFrequency(strs);
+    console.log(resuslt);
+
+
+
+
+    let strMain = 'ha@ppy# birthday !you';
+
+    const revse = (str) => {
+      let words = str.split(' ');
+      let reversedWords = words.map((word) => {
+        console.log('word', word)
+        let reversedAlphaChars = word.split('').filter(char => char.match(/[a-zA-Z]/)).reverse();
+        console.log('reversedAlphaChars', reversedAlphaChars)
+        let result = word.split('').map((char, index) => {
+          console.log('char', char)
+          console.log('main', reversedAlphaChars)
+          return !char.match(/[a-zA-Z]/) ? char : reversedAlphaChars.shift();
+        });
+        console.log('result', result)
+        return result.join('');
+      });
+
+      return reversedWords.join(' ');
+    }
+
+    let ansf = revse(strMain);
+    console.log(ansf);
+
+    let arrstr = [1, 2, 3, 4, 5, 6];
+
+    // const reverse = (str) => {
+    //     return str.split(' ').map((word) => {
+    //         console.log('word', word)
+    //         const reversedAlphaChars = word.match(/[a-zA-Z]/g) ? word.match(/[a-zA-Z]/g).reverse() : [];
+    //         console.log('reversedAlphaChars', reversedAlphaChars)
+    //         return word.split('').map(char => char.match(/[a-zA-Z]/) ? reversedAlphaChars.shift() : char).join('');
+    //     }).join(' ');
+    // }
+    // const strMain = 'happy# birthday !you';
+    // const ansf = reverse(strMain);
+    // console.log(ansf);
+
+
+
+
+    function isAnagram(str1, str2) {
+      if (str1.length !== str2.length) {
+        return false
+      }
+      str1 = str1.split('').reverse().join('')
+      console.log(str1)
+      return str1 === str2
+    }
+    const check = isAnagram('modi', 'idom')
+    console.log(check)
+
+
+
+    // function checkPalindrome(string) {
+    //   const len = string.length;
+    //   for (let i = 0; i < len / 2; i++) {
+    //     if (string[i] !== string[len - 1 - i]) {
+    //       return 'It is not a palindrome';
+    //     }
+    //   }
+    //   return 'It is a palindrome';
+    // }
+    // const value = checkPalindrome('madam');
+    // console.log(value);
+
+
+    let newnum = 8;
+    const checkPrimeInRanges = (uptonum) => {
+      let c = 0
+      for (let i = 1; i <= uptonum; i++) {
+        let prime = true;
+        if (i <= 1) {
+          console.log(`this is not prime number ${i}`)
+        }
+        else if (i >= 2) {
+          for (let j = 2; j < i; j++) {
+            if (i % j == 0) {
+              prime = false
+            }
+          }
+          if (prime) {
+            c++
+            console.log(`this is  prime number ${i}`)
+          }
+          else {
+            console.log(`this is not prime number ${i}`)
+          }
+        }
+      }
+      console.log('total count', c)
+    }
+    checkPrimeInRanges(newnum)
+
+
+    let mains = NaN;
+    switch (mains) {
+      case NaN:
+        console.log('Matched');
+        break;
+      default:
+        console.log('error')
+    }
+
+    // let mains = NaN;
+
+    // if (isNaN(mains)) {
+    //   console.log('Matched');
+    // } else {
+    //   console.log('error');
+    // }
+
+    // function () {
+    //   console.log('matched')
+    // }()
+
+
+    const ages = [3, 10, 18, 20];
+
+    function checkAdult(age) {
+      console.log(age)
+      return age < 77;
+    }
+
+    console.log(ages.every(checkAdult))
+
+    function minMaxPairSum(nums) {
+      nums.sort((a, b) => a - b);
+      console.log(nums)
+      let n = nums.length;
+      console.log(n)
+      let result = 0;
+      for (let i = 0; i < n / 2; i++) {
+        console.log("main " + nums[n - i - 1])
+        result = Math.max(result, nums[i] + nums[n - i - 1]);
+        console.log('result ' + result)
+      }
+
+      console.log("result " + result)
+      return result;
+    }
+
+    const nums = [3, 1, 4, 2, 2, 4];
+    const minimizedMaxPairSum = minMaxPairSum(nums);
+    console.log(minimizedMaxPairSum);
+
+
+    let ndks = [1, 2, 3, 3, 4, 5, 4, 1];
+    let newfil = [];
+
+    let filFun = ndks.filter((ele) => {
+      if (!newfil.includes(ele)) {
+        newfil.push(ele);
+      }
+    });
+
+    console.log(newfil)
+
+
+
+    function countUpperCaseLowerCase(str) {
+      let uppercaseCount = 0;
+      let lowercaseCount = 0;
+      for (let i = 0; i < str.length; i++) {
+        const char = str[i];
+        if (char >= 'A' && char <= 'Z') {
+          uppercaseCount++;
+        }
+        else if (char >= 'a' && char <= 'z') {
+          lowercaseCount++;
+        }
+      }
+      return { uppercaseCount, lowercaseCount };
+    }
+    const inputStrings = "Hello World!";
+    const counts = countUpperCaseLowerCase(inputStrings);
+    console.log(counts.uppercaseCount);
+    console.log(counts.lowercaseCount);
+
+
+
+    const functCase = (str) => {
+      let upp = 0;
+      let low = 0
+
+      for (let i = 0; i < str.length; i++) {
+        if (str[i]) {
+          upp++
+        }
+        else {
+          low++
+        }
+      }
+
+    }
+    const inputStringss = "Hello World!";
+    let len = functCase(inputStrings)
+
+
+    const personss = {
+      name: {
+        first: "John",
+        last: "Doe"
+      },
+      address: null
+    };
+
+    // const firstName = person.name ? person.name.first : undefined;
+    // const lastName = person.name ? person.name.last : undefined;
+    // const city = person.address ? person.address.city : undefined;
+
+    console.log(personss.name.main);
+
+    const arr11 = [0, 1, 2, 2, [3, 4]];
+    console.log(arr11.flat());
+    const arr22 = [0, 1, [2, [3, [4, 5]]]];
+    console.log(arr22.flat(2));
+    console.log(arr22.flat(Infinity));
+
+
+    const sssss = [1, 2, [3, 4], 5, [6]];
+
+    const mappedArray = sssss.map(item => item * 2);
+
+    const flattenedArray = mappedArray.flat();
+
+    console.log('Using map() and flat() separately:');
+    console.log(mappedArray); // [2, 4, [6, 8], 10]
+    console.log(flattenedArray); // [2, 4, 6, 8, 10]
+
+    // Using flatMap() for the same operation
+    const resultArray = sssss.flatMap(item => item * 2);
+
+    console.log('\nUsing flatMap():');
+    console.log(resultArray); // [2, 4, 6, 8, 10]
+
+    let nst = 'rohit sanjay sawanat';
+    let av = ['a', 'e', 'i', 'o', 'u'];
+
+    let nenst = nst.split('');
+    let vowels = 0;
+
+    for (let i = 0; i < nenst.length; i++) {
+      if (av.includes(nenst[i])) {
+        vowels++
+      }
+    }
+
+    console.log('Vowels in the string:', vowels);
+
+
+
+
+    // Example 1
+    console.log(variable); // ReferenceError: variable is not defined
+    var variable = 10;
+
+    // Example 2
+    function exampleFunction() {
+      console.log(x); // ReferenceError: Cannot access 'x' before initialization
+      var x;
+    }
+
+    exampleFunction();
+
+
+    function operate(operator) {
+      console.log(a, b)
+      return function (a, b) {
+        return operator(a, b);
+      };
+    }
+    function add(a, b) {
+      return a + b;
+    }
+    function subtract(a, b) {
+      return a - b;
+    }
+    function multiply(a, b) {
+      return a * b;
+    }
+    function divide(a, b) {
+      return a / b;
+    }
+    const addOperator = operate(add);
+    const subtractOperator = operate(subtract);
+    const multiplyOperator = operate(multiply);
+    const divideOperator = operate(divide);
+    console.log(addOperator(5, 3));      // Output: 8
+    console.log(subtractOperator(8, 3)); // Output: 5
+    console.log(multiplyOperator(4, 2)); // Output: 8
+    console.log(divideOperator(10, 2));  // Output: 5
+
+    function fibonacci(n) {
+      console.log('n', n)
+      if (n <= 1) {
+        return n;
+      } else {
+        return fibonacci(n - 1) + fibonacci(n - 2);
+      }
+    }
+
+    function printFibonacciSeries(count) {
+      for (let i = 0; i < count; i++) {
+        console.log(fibonacci(i));
+      }
+    }
+    const count = 10;
+    printFibonacciSeries(count);
+
+    function areAnagrams(str1, str2) {
+      // Remove non-alphanumeric characters and convert to lowercase
+      const cleanStr1 = str1.replace(/[^a-z0-9]/gi, '').toLowerCase();
+      const cleanStr2 = str2.replace(/[^a-z0-9]/gi, '').toLowerCase();
+
+      // Check if the lengths are different
+      if (cleanStr1.length !== cleanStr2.length) {
+        return false;
+      }
+
+      const charCount = {};
+
+      for (let char of cleanStr1) {
+        charCount[char] = (charCount[char] || 0) + 1;
+      }
+
+      console.log(charCount)
+
+      for (let char of cleanStr2) {
+        if (!charCount[char]) {
+          return false;
+        }
+        // charCount[char]--;
+      }
+      console.log('charCount', charCount)
+
+      return true;
+    }
+
+    const string1 = "listen";
+    const string2 = "silent";
+
+    if (areAnagrams(string1, string2)) {
+      console.log(`${string1} and ${string2} are anagrams.`);
+    } else {
+      console.log(`${string1} and ${string2} are not anagrams.`);
+    }
+
+    let sortarr = [{ id: 1, name: 'rohit' }, { id: 2, name: 'pk' }, { id: 2, name: 'apk' }];
+    sortarr.sort((a, b) => a.name.localeCompare(b.name));
+
+    console.log(sortarr);
+
+
+    // let strssss = 'abcsdnjsnabcsdoabc';
+    // let substring = 'abc';
+    // let matches = strssss.match(new RegExp(substring, 'g'));
+    // let countss = matches ? matches.length : 0;
+    // console.log(countss); 
+
+    let strssss = 'abcsdnjsnabcsdoabc';
+    let substring = 'abc';
+    let countss = 0;
+    for (let i = 0; i < strssss.length; i++) {
+      if (strssss.slice(i, i + substring.length) === substring) {
+        countss++;
+      }
+    }
+
+    console.log(countss);
+
+
+    function revefun(str) {
+      let wordsym = str.split(/([^\w])/);
+      console.log('wordsym', wordsym)
+
+      let revrword = wordsym
+        .filter((element) => /\w/.test(element))
+        .map((word) => word.split("").reverse().join(""));
+      console.log('revrword', revrword)
+      let revstrs = wordsym.map((element) =>
+        /\w/.test(element) ? revrword.shift() : element
+      );
+      let revstr = revstrs.join("");
+      return revstr;
+    }
+
+    let revestr = "Happy# Birth&day to !you @dnj";
+    let resultt = revefun(revestr);
+    console.log(resultt);
+
+
+    let str1 = 'madam';
+    let str2 = 'damam';
+
+    const sortfun = (a, b) => {
+
+      let aa = a.split('')
+      let bb = b.split('')
+      if (aa.length !== bb.length) {
+        return false
+      }
+      else {
+        aa.sort();
+        bb.sort()
+
+        for (let i = 0; i < aa.length; i++) {
+          if (aa[i] !== bb[i]) {
+            return false
+          }
+        }
+
+        return true
+
+      }
+
+
+
+
+    }
+    const callfuns = sortfun(str1, str2);
+    console.log(callfuns)
+
+    let w1 = 'rohit'
+    let w2 = 'pk'
+    let lgth = Math.min(w1.length, w2.length);
+    console.log('lgth', lgth)
+    let empstr = '';
+    for (let i = 0; i < lgth; i++) {
+      empstr += w1[i] + w2[i]
+    }
+    empstr += w1.slice(lgth) + w2.slice(lgth)
+    console.log(empstr)
+
+
+    // function checkPalindrome(string) {
+    //   const len = string.length;
+    //   for (let i = 0; i < len / 2; i++) {
+    //     if (string[i] !== string[len - 1 - i]) {
+    //       return 'It is not a palindrome';
+    //     }
+    //   }
+    //   return 'It is a palindrome';
+    // }
+    // const value = checkPalindrome('madam');
+    // console.log(value);
+
+    // let nn = 10;
+    // let coin = [2, 4, 7, 8, 9];
+    // let cn = 0
+    // let cnm = 0
+
+    // const funscoin = () => {
+    //   for (let i = 1; i <= 10; i++) {
+    //     // console.log(i)
+    //     if (coin.includes(i)) {
+    //       cn++
+    //     }
+    //   }
+    //   console.log(cn)
+
+    //   for (let i = 10; i >= 1; i--) {
+    //     // console.log(i)
+    //     if (coin.includes(i)) {
+    //       cnm++
+    //     }
+    //   }
+    //   console.log(cnm)
+    // }
+    // funscoin()
+
+    function calculateSteps(nn, coin) {
+      let person1 = 0;
+      let person2 = coin.length - 1;
+      let stepsPerson1 = 0;
+      let stepsPerson2 = 0;
+
+      while (person1 <= person2) {
+        console.log(person1)
+        console.log(person2)
+        stepsPerson1 += coin[person1];
+        person1++;
+
+        // if (person1 <= person2) {
+        //   stepsPerson2 += coin[person2];
+        //   person2--;
+        // }
+      }
+      console.log('stepsPerson1', stepsPerson1)
+      console.log('stepsPerson2', stepsPerson2)
+
+
+      return { stepsPerson1, stepsPerson2 };
+    }
+
+    let nn = 10;
+    let coin = [2, 4, 7, 8, 9];
+
+    let resultsssss = calculateSteps(nn, coin);
+
+    console.log("Person 1 steps:", resultsssss.stepsPerson1);
+    console.log("Person 2 steps:", resultsssss.stepsPerson2);
+
+
+
+    function calculateTotalSteps(coins, person1Coins, person2Coins) {
+      const steps = new Array(10).fill(0);
+      let totalSteps = 0;
+      coins.forEach(coinIndex => {
+        steps[coinIndex] = 1;
+      });
+      let person1Position = 0;
+      let person2Position = 9;
+      while (person1Coins > 0 || person2Coins > 0) {
+        if (person1Coins > 0) {
+          while (steps[person1Position] !== 1) {
+            person1Position++;
+            totalSteps++;
+          }
+          person1Coins--;
+          steps[person1Position] = 0;
+        }
+
+        if (person2Coins > 0) {
+          while (steps[person2Position] !== 1) {
+            person2Position--;
+            totalSteps++;
+          }
+          person2Coins--;
+          steps[person2Position] = 0;
+        }
+      }
+
+      return totalSteps;
+    }
+
+    const totalSteps = calculateTotalSteps([2, 4, 7, 8, 9], 2, 3);
+    console.log("Total steps required:", totalSteps);
+
+
+
+
+    for (let i = 2; i <= 8; i += 2) {
+      let c = '';
+      for (let j = 0; j < i; j++) {
+        c += i;
+      }
+      console.log(c);
+    }
+
+
+
+  </script>
+
+
+</body>
+
+</html>
