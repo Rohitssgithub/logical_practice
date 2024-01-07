@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Conditional Rendering</h1>
+    <p id="rendered-element">OFF</p>
+    <div class="custom-control custom-switch">
+        <input type="checkbox" class="custom-control-input" id="customSwitches" onchange="updateText()">
+        <label class="custom-control-label" for="customSwitches"></label>
+    </div>
+
+    <h1>Event Handling Task</h1>
+
+    <h3>Email Registration</h3>
+    
+    <input id = "email" type="text" name="text1" placeholder="Enter E-mail ID">
+    <input id = "password" type="password" placeholder="Enter Password">
+    <p id="registered-text"></p>
+    <button id= "submit" onclick="validateForm()" onmouseover="mouseOverButton()" onmouseleave="mouseOutButton()"> Register</button>
+    
+    <script>
+        const button = document.getElementById("customSwitches");
+        const textElement = document.getElementById("rendered-element");
+        textElement.innerHTML = button.checked ? "ON" : "OFF";
+
+        function updateText() {
+            textElement.innerHTML = button.checked ? "ON" : "OFF";
+        }
+
+        function validateEmail() {
+            let mailformat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+            let email = document.getElementById('email').value;
+            if (!email.match(mailformat)) {
+                console.log("error");
+                document.getElementById("email").style.borderColor = "red";
+                return false;
+            }
+            document.getElementById("email").style.borderColor = "green";
+            return true;
+        }
+
+        function validatePassword() {
+            let password = document.getElementById('password').value;
+            console.log(password);
+            let minChars = 8;
+            let passwordFormat = /^[a-zA-Z0-9!@#$%^&*]{6,16}$/;
+
+            if (password.length < minChars || !passwordFormat.test(password)) {
+                document.getElementById("password").style.borderColor = "red";
+                return false;
+            }
+            console.log("true");
+            document.getElementById("password").style.borderColor = "green";
+            return true;
+        }
+
+        function validateForm() {
+
+            let emailValid = validateEmail();
+            let passwordValid = validatePassword();
+
+            if (emailValid && passwordValid) {
+                document.getElementById("registered-text").style.borderColor = "green";
+                document.getElementById("registered-text").innerHTML = "Registered Succesfully";
+                document.getElementById("registered-text").style.display = "block"
+            }
+            else
+                return false;
+
+        }
+
+        function mouseOverButton() {
+            document.getElementById("submit").style.backgroundColor = "blue"
+        }
+
+        function mouseOutButton() {
+            document.getElementById("submit").style.backgroundColor = "aqua"
+        }
+    </script>
+</body>
+
+</html>
